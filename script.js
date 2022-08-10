@@ -1,5 +1,4 @@
-printAnswer1(8);
-printAnswer2(8);
+#!/usr/bin/env node
 
 //exercise 1
 function fibs(limit) {
@@ -9,10 +8,7 @@ function fibs(limit) {
   }
   return fibArray;
 }
-
-function printAnswer1(n) {
-  document.getElementById("a1").textContent = fibs(n);
-}
+console.log("Fibonacci sequence using iteration: " + fibs(8));
 
 //exercise 2
 function fibsRec(limit) {
@@ -27,11 +23,8 @@ function fibsRec(limit) {
     return [...fibArrayRec, fibArrayRec[limit - 2] + fibArrayRec[limit - 1]];
   }
 }
-
-function printAnswer2(n) {
-  //The nth number appears on the position n - 1 on the array. 
-  document.getElementById("a2").textContent = fibsRec(n-1);
-}
+//The nth number appears on the position n - 1 on the array.
+console.log("Fibonacci sequence using recursion: " +fibsRec(8 - 1));
 
 //exercise 3
 function factorial(n) {
