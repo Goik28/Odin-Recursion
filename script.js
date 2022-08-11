@@ -24,17 +24,43 @@ function fibsRec(limit) {
   }
 }
 //The nth number appears on the position n - 1 on the array.
-console.log("Fibonacci sequence using recursion: " +fibsRec(8 - 1));
+console.log("Fibonacci sequence using recursion: " + fibsRec(8 - 1));
 
 //exercise 3
-function factorial(n) {
-  if (n === 1) {
-    return 1;
-  } else {
-    return n * factorial(n - 1);
+function mergeSort(array) {
+  const sortedArray = [];
+  if (array.length < 2) {
+    return sortedArray.concat(array);
   }
+  let leftArray = array.slice(0, array.length / 2);
+  let rightArray = array.slice(array.length / 2);
+  if (leftArray.length > 1) {
+    leftArray = mergeSort(leftArray);
+  }
+  if (rightArray.length > 1) {
+    rightArray = mergeSort(rightArray);
+  }
+  while (true) {
+    if (leftArray[0] <= rightArray[0]) {
+      sortedArray.push(leftArray[0]);
+      leftArray.shift();
+    } else {
+      sortedArray.push(rightArray[0]);
+      rightArray.shift();
+    }
+    if (leftArray.length == 0) {
+      sortedArray.push(...rightArray);
+      break;
+    }
+    if (rightArray.length == 0) {
+      sortedArray.push(...leftArray);
+      break;
+    }
+  }
+  return sortedArray;
 }
 
-function printAnswer3(n) {
-  document.getElementById("a3").textContent = factorial(n);
-}
+console.log(
+  "MergeSort algo: [6, 5, 1, 3, 7, 2, 8, 4] = " +
+    mergeSort([6, 5, 1, 3, 7, 2, 8, 4])
+);
